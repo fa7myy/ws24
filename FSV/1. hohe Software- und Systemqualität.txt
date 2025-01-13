@@ -1,0 +1,64 @@
+Was ist das Ziel dieser Vorlesung? - hohe Software- und Systemqualität
+
+▶ Welche Rolle spielen abstrakte Modelle und Spezifikationen dabei,
+dieses Ziel zu erreichen?
+
+▶ Zum Überlegen: Bei welchen Software-Projekten lohnt sich Formale
+Spezifikation und Verifikation?
+
+
+Was bedeutet Spezifikation?
+Spezifikation ist die klarstellung bestimmte punkte bzw. anforderungen an denen sich das system bzw. das software-produkt anhalten sollen.
+Wichtig: Spezifikation != Anforderung. Anforderung = SWT = Features. Spezifikation = Anforderung in der Systemschnittstelle (Technical)
+Bsp.: 
+1. keine Abstürze
+2. korrekte Ein-/Ausgaben
+3. zeitliches Verhalten
+
+Was bedeutet Verifikation?
+Verfikation ist die art und weise das produkt so zu testen um sicher zu stellen, dass es sich an den spezifizierten anforderungen einhaelt.
+Bsp.:
+1. automatisierte Überprüfung
+2. des Quellcodes
+3. eines abstrakten Modells
+
+Modellierung: Programmcode in ein abstraktes modell einzuzeichnen/ abstraktes problembeschreibung.
+
+Formal: durch mathematische Techniken eindeutig und präzise eine verlaufsweise darzustellen.
+theoretisches begründetes Vertrauen in die Analyse
+
+Typisierung
+▶ Spezifikation möglicher Werte zur Laufzeit
+▶ Typcheck = Beweis dass bestimmte Fehler nicht auftreten
+▶ Erweiterungen z.B. @NonNull (Java 11 EE)
+
+Testen:
+
+4 pillars der Programmausgabe:
+
+System erfüllt die Spezifikation
++ Zertifikat/Beweis
+
+kein Gegenbeispiel gefunden
++ Coverage
+
+unbekannt (z.B. Timeout)
+
+System fehlerhaft
++ Gegenbeispiel
+
+Wichtig: Testen != Verfikation
+
+Testen: beispielhaft ausprobieren
+Verifikation: vollständig überprüfen oder Beweise
+
+Was Sie wisssen sollten
+▶ Zwei Spezifikationstechniken
+▶ Zwei Modellierungstechniken
+▶ Worin unterscheiden sich Verifikation und Testen?
+▶ Was sind Herausforderungen bei Testen/Verifikation?
+▶ Was macht ein gutes Modell aus?
+▶ Wie kann man dadurch den Herausforderungen beim Testen/Verifikation
+begegnen?
+
+
