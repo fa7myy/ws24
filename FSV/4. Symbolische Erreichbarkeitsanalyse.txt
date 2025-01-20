@@ -1,0 +1,44 @@
+Symbolische Erreichbarkeitsanalyse
+
+Verifikation
+
+▶ Berechnung der erreichbaren Zustände σR von P: mit Hilfe des Transitionssystems und der expliziten Erreichbarkeitsanalyse
+▶ Falls es einen Zustand s ∈ σR gibt mit s |= pc = err, dann wurde ein Fehler gefunden
+
+Auszählung konkreter Zustände: { {x → 1}, {x → 2}, . . .}
+    ✓ konkret, Ausführungsnah
+    ✗ skaliert nicht, nur endliche Mengen
+Durch Formeln beschreiben: { s | s |= ϕ }
+    ✓ kompakt
+    ✓ effiziente Datenstrukturen und Algorithmen verfügbar
+Notation für ϕ z.B. Java Ausrücke vom Typ boolean
+Beispiel ϕ: x > 0 für int x
+▶ { s | s |= ϕ }= { s | s |= x > 0 }= { {x → x, . . .} | x ∈ [[int]] und x > 0 }
+
+Repräsentation ohne Zustaende
+∅ ⇝ false
+ϕ1 ∪ ϕ2 ⇝ ϕ1 ∨ ϕ2
+ϕ1 ⊆ ϕ2 ⇝ ϕ1 ⇒ ϕ2, ϕ1 ∧ ¬ϕ2 unerfüllbar
+
+Was man wissen sollte:
+
+▶ Wofür werden Nichtdeterminismus und Annahmen verwendet?
+    ✓ Spezifikation von Schnittstellen und Eingaben
+    ✓ Modellierung von Systemen
+    ✓ Modulare Beweise via Design by Contract
+
+▶ Welche Probleme treten dann bei der expliziten Erreichbarkeitsanalyse auf?
+    ✗ Nichtdeterminismus: Zustandsexplosion
+    ✗ Annahmen: abgebrochene Ausführungen
+    ✗ Annahmen: müssen ausführbar sein
+
+▶ Wie sind Annahmen im Kontrollflussautomat repräsentiert?
+▶ Wie ist nichtdeterministische Auswahl im Transitionssystem repräsentiert?
+▶ Welchen Vorteil hat die symbolische Zustandsrepräsentation?
+▶ Wie werden Mengenoperationen auf Formeln abgebildet?
+▶ In wie fern ist Post auf Formeln etwas schwierig?
+▶ Welche Tools können Lösungen für Formeln finden?
+▶ Zum Nachdenken: Wie könnte man die Algorithmen zur expliziten und
+symbolischen Suche optimieren, wenn eine Zielregion als Spezifikation
+bekannt ist z.B. bestimmte Zustände, oder Invarianten die in jedem Zustand
+gelten sollen?

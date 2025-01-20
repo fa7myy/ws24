@@ -1,0 +1,108 @@
+Kontrollflussautomaten und Abdeckungsmaße
+
+Kontrollflussautomaten:
+Knoten = Programmstellen/Zeilen
+Kanten = Anweisungen & Tests (In der Zeile des vorherigen Knotens)
+Schleifen → Zyklen
+
+✓ Gut geeignet, um die Ausführung
+von Programmen zu beschreiben
+und zu analysieren!
+
+Überdeckungsmaße/Coverage:
+
+1. Anweisungsüberdeckung (statement coverage): wurden alle Programmstellen wurden besucht? (= Knoten im CFA)
+
+2. Zweigüberdeckung (branch coverage): wurden alle Fallunterscheidungen genommen? (= Kanten im CFA)
+
+3. Pfadüberdeckung (path coverage): wurden alle möglichen Pfade durch das Programm ausgeführt? (allgemein: unendlich viele)
+=> beweisbare Korrektheit
+
+Dead code => 100% coverage nicht immer erreichbar
+
+Transitionssysteme & Erreichbarkeit:
+
+Transitionssysteme beschreiben den Zustand an einer Zeile und bezieht sich auf alle variablen.
+
+Bsp. {Pc, Variablen Zustand} => {3, In->"", i->0, c->0} aus der Folie S. 25
+
+Transitionssystem T = (Σ, σI, →) gegeben durch
+▶ Menge Σ aller (potentiellen) Zustände
+▶ Menge σI ⊆ Σ aller Startzustände
+▶ → ⊆ Σ × Σ Transitionsrelation
+
+Syntax (= statische Sicht): Kontrollflussautomaten als Programmrepräsentation
+
+Semantik (= dynamische Sicht): Transitionssysteme zur Beschreibung von Ausführungen
+
+Spezifikation von Eigenschaften
+Invariante = erwünschte Eigenschaft aller erreichbaren Zustände
+insbesondere: Zielzustände/Fehlerzustände
+
+Gegeben: Programm als Kontrollflussautomat P = (L, ℓ0,G)
+Gegeben: Fehlerstelle(n) ℓerror
+Direkt: throw new Exception() + zusätzliche Fehlertransitionen für Standardfehler
+
+Verifikation: gilt ℓerror ∈ σR im zugehörigen Transitionssystem?
+▶ Ja: Programm fehlerhaft
+▶ Nein: Programm korrekt
+Evtl Nichtterminierung wenn unendlich viele Zustände erreichbar sind
+
+✓ Transitionssysteme als Semantik für Programme
+✓ Verifikation anhand erreichbarer Zustände
+✓ Analyse am Beispiel (Modelle, Programme)
+
+Explizite Erreichbarkeitsanalyse:
+
+Laufzeit: proportional zur Anzahl der erreichbaren Transitionen
+
+Vollständigkeit: alle erreichbaren Zustände werden gefunden (wenn endlich erreichbar, ohne Beweis)
+
+Welche Datenstruktur für τ?
+
+Stack (LIFO) → DFS (depth-first search) Tiefensuche
+▶ lange Spuren zuerst verfolgen
+✓ rekursive Implementierung DFS gibt uns sofort den Fehlerpfad and
+
+Queue (FIFO) → BFS (breadth-first search) Breitensuche
+✓ findet Fehler in unendlichen großen Systemen
+✗ erhöhter Speicherplatzverbrauch
+
+Priority Queue: vielversprechende Spuren zuerst
+(Heuristiken zur Fehlersuche)
+
+Gegeben
+▶ P als Kontrollflussautomat (L, ℓ0,G)
+▶ x1 : t1, . . . , xn : tn typisierte Variablen für P
+Konstruiere T = (Σ, σI ,→)
+▶ Σ = { {pc 7→ ℓ,x → v} | ℓ ∈ L, v ∈ [[t]] }
+
+
+
+Was man wissen sollte:
+
+▶ Programme ↔ Kontrollflussautomaten: Knoten ≈ Programmzeilen, Kanten = Tests & Anweisungen
+▶ Welche Abdeckungsmaße gibts es? Vor/Nachteile?
+▶ Wie sind die Abdeckungsmaße bezgl Kontrollflussautomaten definiert?
+▶ Zum Nachdenken: Bei welchen Programmen/Systemen macht 100% Pfadabdeckung Sinn?
+▶ Wie repräsentiert man ein Programm als Kontrollflussautomaten, formal?
+▶ Benennen der Bestandteile eines Transitionssystems T = (Σ, σI ,→)
+▶ Was ist der Zusammenhang von Kontrollflussautomaten und den zugehörigen
+Transitionssystemen
+▶ Welchen Nutzen hat die Menge der erreichbaren Zustände für die Verifikation?
+Zum Nachdenken
+▶ Muss man das zu einem Programm gehörige Transitionssystem vollständig
+berechnen, bevor man eine Erreichbarkeitsanalyse zur Verifikation durchführt?
+▶ Welches Kriterium der Test-Abdeckung passt zur Berechnung von σR?
+
+▶ Begriffe: Nachfolgerzustände post, Spuren, Definition von σR
+▶ Übersetzung Programme → Transitionssysteme:
+▶ Wie werden Programmzustände im Transitionssystem repräsentiert?
+▶ Wie werden Ausdrücke und Bedingungen über Zuständen ausgewertet?
+▶ Wie ergeben sich die Transitionen aus den Kanten im Kontrollflussautomaten
+als Ausführung der Zuweisungen bzw Überprüfung der Bedingungen?
+▶ Grundidee hinter Korrektheit, Laufzeit, Vollständigkeit des Algorithmus
+▶ Explizite Erreichbarkeitsanalyse auf Modellen und Programmen ausführen
+
+
+
