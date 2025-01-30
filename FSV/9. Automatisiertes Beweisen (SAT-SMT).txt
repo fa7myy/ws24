@@ -1,0 +1,71 @@
+9. Automatisiertes Beweisen (SAT/SMT)
+
+SMT = Satisfiability modulo Theory (SAT + Theorien)
+Gibt es eine Belegung s aller Variablen, sodass s |= ϕ?
+
+Aussagenlogik: Begriffe und Definitionen
+
+Gegeben: Definition der Semantik s |= ϕ von ϕ für Belegungen s
+
+Erfüllbarkeit und Allgemeingültigkeit
+▶ Falls s |= ϕ sagt man: s erfüllt ϕ, ϕ gilt in s
+▶ ϕ ist erfüllbar, falls es ein s gibt mit s |= ϕ
+▶ ϕ ist allgemeingültig, geschrieben |= ϕ, falls für alle s gilt s |= ϕ
+Solche Formeln heißen auch Tautologien
+▶ ϕ ist unverfüllbar, falls es kein s gibt mit s |= ϕ
+▶ Zusammenhang: ϕ ist allgemeingültig falls ¬ϕ unerfüllbar
+
+Äquivalenz: ϕ und ψ sind äquivalent
+▶ s |= ϕ genau wenn s |= ψ für alle Belegungen s
+▶ alternativ: ϕ ⇐⇒ ψ ist allgemeingültig, d.h. s |= ϕ ⇐⇒ ψ
+
+Wie finden wir erfüllende Belegungen s für ϕ bzw. beweisen dass es keine gibt?
+✗ Alle 2|A| Möglichkeiten durchprobieren
+✓ Berechnung auf Formeln anstatt mit Belegungen
+✓ Clevere Algorithmen: Vereinfachen & Abkürzungen
+
+Vereinfachungsmöglichkeiten
+▶ A ∧ true ⇐⇒ A und A ∨ true ⇐⇒ true
+▶ A ∧ false ⇐⇒ false und A ∨ false ⇐⇒ A
+▶ A ∧ A ⇐⇒ A, usw. . .
+
+Eigenschaften der Implikation
+▶ (A =⇒ B) ⇐⇒ (¬A ∨ B)
+▶ ¬A ⇐⇒ (A =⇒ false)
+▶ (A =⇒ (B =⇒ C)) ⇐⇒ (A ∧ B =⇒ C)
+
+Regeln von De Morgan: Negation nach innen ziehen
+▶ ¬(A ∧ B) ⇐⇒ (¬A ∨ ¬B)
+▶ ¬(A ∨ B) ⇐⇒ (¬A ∧ ¬B)
+
+Distributionsgesetze
+▶ A ∧ (B ∨ C) ⇐⇒ (A ∧ B) ∨ (A ∧ C)
+▶ A ∨ (B ∧ C) ⇐⇒ (A ∨ B) ∧ (A ∨ C)
+
+Berechnung: Anwenden der folgenden Regeln bis NNF hergestellt ist
+▶ ¬true ⇝ false und ¬false ⇝ true
+▶ ϕ =⇒ ψ ⇝ ¬ϕ ∨ ψ
+▶ ϕ ⇐⇒ ψ ⇝ (ϕ ∧ ψ) ∨ (¬ϕ ∧ ¬ψ) oder
+⇝ (¬ϕ ∨ ψ) ∧ (ϕ ∨ ¬ψ)
+▶ ¬(ϕ ∧ ψ) ⇝ ¬ϕ ∨ ¬ψ
+▶ ¬(ϕ ∨ ψ) ⇝ ¬ϕ ∧ ¬ψ
+
+Disjunktiver Normalform (DNF): falls ϕ als Disjunktion (“oder”) zwischen Konjunktionen von Literalen gegeben ist
+Beispiel
+▶ ϕ: (A ∧ B ∧ ¬C) ∨ (¬A ∧ ¬B)
+
+Konjunktiver Normalform: Eine Formel ϕ ist in konjunktiver Normalform (KNF), wenn ϕ als
+Menge von Klauseln gegeben ist, d.h. ϕ ist als Konjunktion (“und”) zwischen
+Disjunktionen von Literalen gegeben ist
+Beispiel
+▶ ϕ: (A ∨ B ∨ ¬C) ∧ (¬A ∨ ¬B)
+
+Eine Klausel mit nur einem Literal nennt man Unit-Clause
+
+Pure Literal Rule: A literal is pure if it appears only in one polarity (either always positive or always negative) in the formula
+
+Was Sie können und wissen sollten
+▶ DPLL Algorithmus auf Papier durchführen (analog zu den Beispielen)
+▶ Wie helfen die Regeln “Unit-Propagation” und “Pure Literal Eliminiation”
+schnell zu einem Ergebnis zu kommen?
+(= Ausnutzen von Abkürzungen in der Suche nach erfüllenden Belegungen)

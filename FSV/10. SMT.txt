@@ -1,0 +1,110 @@
+10. SMT
+
+SMT = Satisfiability modulo Theory (SAT + Theorien)
+
+1. Uninterpreted Functions (UF)
+
+Key Concepts:
+- Definition: UF is a framework to reason about functions and predicates without assigning concrete interpretations.
+- Components:
+  - Variables (x): Elements from abstract sorts S.
+  - Constants (c): Fixed elements of a sort S.
+  - Functions (f: S1 × ... × Sn → S): Uninterpreted relations between domains S1, ..., Sn and range S.
+  - Predicates (p: S1 × ... × Sn): Boolean relations over elements.
+- Terms: Built recursively:
+  - t ::= x | f(t1, ..., tn) | ite(φ, t1, t2)
+- Propositions:
+  - A ::= t1 = t2 | p(t1, ..., tn)
+
+Valid Reasoning Rules:
+1. Equality Properties: = is reflexive, symmetric, and transitive.
+2. Congruence Rule:
+   - If x = y, then:
+     - f(x) = f(y)
+     - p(x) ⇔ p(y)
+3. Quantified Axioms: Often used to specify properties, e.g., commutativity:
+   - ∀x, y. f(x, y) = f(y, x)
+
+Fast Congruence Closure Algorithm:
+- Efficiently decides equalities in UF.
+- Builds equivalence classes of terms.
+- Propagates equalities through functions and predicates.
+
+Applications:
+- SMT-Solvers: UF is commonly used in reasoning about software correctness and abstract models.
+- Example: Verification of logical constraints without assigning concrete meanings to functions.
+
+2. DPLL Algorithm
+
+Key Concepts:
+- Purpose: Solve the SAT problem (is a propositional logic formula satisfiable?).
+- Steps:
+  1. Simplification: Apply Unit Propagation and Pure Literal Elimination.
+  2. Branching: Choose a variable and assign a truth value.
+  3. Backtracking: Explore alternative branches if a contradiction arises.
+  4. Termination: If all clauses are satisfied → SAT. If no branches work → UNSAT.
+
+Integration with Theories (Z, R):
+- Z: Integers (ℤ).
+- R: Real numbers (ℝ).
+- Combine DPLL with theory solvers to handle additional constraints (e.g., linear inequalities).
+
+New Clauses and Their Role:
+- Conflict-driven clause learning (CDCL): Identify conflicts during the search and generate new clauses to prevent revisiting the same conflict.
+- Impact: Reduces search space and accelerates finding a solution.
+
+Paper Example:
+- Formula: (x > 0) ∧ (x + y = 5) ∧ (y < 4).
+- Integration of theory solvers:
+  - Propagate x > 0, deduce y = 5 - x, verify y < 4.
+
+3. SMT-Solvers
+
+What SMT-Solvers Solve:
+- Satisfiability Modulo Theories (SMT): Check satisfiability of formulas with additional theories (e.g., arithmetic, arrays, UF).
+- Example Problem Types:
+  - Software verification.
+  - Model checking.
+  - Scheduling and optimization problems.
+
+Applications:
+- Arithmetic (Z, R): Linear inequalities, integer and real constraints.
+- Uninterpreted Functions: Abstract reasoning about program functions.
+- Quantifiers: Verification of properties (e.g., "all elements in a set satisfy condition X").
+- Arrays: Model array accesses and modifications.
+
+4. Quantifiers and Arrays
+
+Quantifiers:
+- Universal Quantifier (∀):
+  - ∀x. φ → φ must hold for all x.
+- Existential Quantifier (∃):
+  - ∃x. φ → φ must hold for at least one x.
+
+Instantiation Rules:
+1. Universal Quantifier:
+   - ∀x. φ ⇒ φ[x ↦ t], for any term t.
+2. Existential Quantifier:
+   - φ[x ↦ t] ⇒ ∃x. φ, if t satisfies φ.
+
+Arrays:
+- Syntax:
+  - a[k]: Access element at index k.
+  - a[k := v]: New array where index k is updated to v.
+- Rules:
+  - Update rule: a[k := v][k'] = ite(k = k', v, a[k']).
+  - Extensionality: (∀k. a[k] = b[k]) ⇒ a = b.
+
+Practical Example: Sorted Array
+- Verify if an array a is sorted:
+  - ∀i. 0 ≤ i < n - 1 ⇒ a[i] ≤ a[i+1].
+
+Exam Preparation Tips:
+1. DPLL with Theory Integration:
+   - Practice manually solving SAT problems with additional constraints (e.g., arithmetic).
+2. Quantifiers:
+   - Be comfortable with instantiation and substitution rules.
+3. Arrays:
+   - Understand and apply update rules and extensionality for proofs.
+4. SMT-Solvers:
+   - Know their purpose and practical applications, especially for software verification and arithmetic reasoning. 

@@ -1,0 +1,86 @@
+12. Lineare Temporale Logik
+
+Spezifikation von Eigenschaften
+▶ über einzelne Zustände, z.B. gilt t ≥ tmin in s0?
+▶ über alle erreichbaren Zustände, z.B. ∀s ∈ σR. s |= t ≥ tmin?
+▶ über gesamte Abläufe ⇝ Lineare Temproale Logik
+
+### **Zusammenfassung: Temporale Logik und Transitionssysteme**
+
+#### **1. Modellierung einfacher Systeme mit Transitionssystemen**
+
+- **Transitionssysteme** beschreiben den Zustand eines Systems und dessen mögliche Zustandsübergänge:
+  - **Zustandsraum:** \( \Sigma \), eventuell in mehrere Teile gegliedert (z. B. \( \Sigma_1 \) und \( \Sigma_2 \) für parallele Systeme).
+  - **Initialzustand:** \( \sigma_I \subseteq \Sigma \), beschreibt den Startpunkt des Systems.
+  - **Transitionen:** \( \to \subseteq \Sigma \times \Sigma \), definiert die möglichen Übergänge zwischen Zuständen.
+
+#### **Beispiel: Vorlesungssaal**
+- Zustandsraum: \( \Sigma = \{(B, L) \mid B \in \{\text{on}, \text{off}\}, L \in \{\text{on}, \text{off}\}\} \)
+- Initialzustand: \( \sigma_I = \{(\text{off}, \text{off})\} \)
+- Transitionen:
+  - \( (\text{off}, L) \to (\text{on}, L) \) (Beamer wird eingeschaltet).
+  - \( (B, \text{off}) \to (B, \text{on}) \) (Licht wird eingeschaltet).
+
+---
+
+#### **2. Spezifikation in LTL**
+
+- **LTL (Linear Temporal Logic):** Eine Sprache zur Spezifikation von temporalen Eigenschaften eines Systems.
+- **Operatoren:**
+  - \( \Box P \): \( P \) gilt in jedem Zustand (Sicherheit).
+  - \( \Diamond P \): \( P \) tritt irgendwann auf (Lebendigkeit).
+  - \( P \ U Q \): \( P \) gilt bis \( Q \) garantiert eintritt.
+
+#### **Beispiele für LTL-Spezifikationen:**
+1. **Sicherheitseigenschaft:**  
+   - \( \Box (\text{Licht an} \implies \text{Beamer an}) \): Wenn das Licht an ist, ist auch der Beamer an.
+2. **Lebendigkeitseigenschaft:**  
+   - \( \Diamond (\text{Ziel erreicht}) \): Das Ziel wird irgendwann erreicht.
+3. **Kombination:**  
+   - \( \Box (\text{Anfrage} \implies \Diamond \text{Antwort}) \): Jede Anfrage führt garantiert zu einer Antwort.
+
+---
+
+#### **3. Sicherheit und Lebendigkeit: Grundsätzliche Unterscheidung**
+
+- **Sicherheitseigenschaften:**
+  - Ziel: "Etwas Schlechtes passiert nie."
+  - Prüfung: Kann auf endlichen Spuren widerlegt werden.
+  - **Beispiel:** \( \Box (\text{keine Überschreitung von Grenzwerten}) \).
+
+- **Lebendigkeitseigenschaften:**
+  - Ziel: "Etwas Gutes passiert irgendwann."
+  - Prüfung: Kann nicht auf endlichen Spuren widerlegt werden.
+  - **Beispiel:** \( \Diamond (\text{System kehrt in sicheren Zustand zurück}) \).
+
+---
+
+#### **4. Ausblick**
+
+1. **Formale Semantik von LTL:**
+   - LTL wird über unendliche Zustandsfolgen definiert:
+     - **Beispiel:** \( s = (s_0, s_1, s_2, \dots) \).
+     - \( s \models \Box P \): \( P \) gilt in allen \( s_i \).
+     - \( s \models \Diamond P \): \( P \) gilt für mindestens ein \( s_i \).
+
+2. **Automaten mit Ein-/Ausgaben:**
+   - Modelle mit klar definierten Eingaben (Trigger, Signale) und Ausgaben (Reaktionen, Ergebnisse).
+   - Übergänge hängen von Eingaben ab und ändern Zustände entsprechend.
+
+3. **Verifikationstechniken:**
+   - Überprüfen, ob ein Automat die LTL-Spezifikationen erfüllt.
+   - **Beispiel:** Modellprüfung (Model Checking), um \( \Box (\text{keine Deadlocks}) \) zu verifizieren.
+
+---
+
+### **Zusammenfassung der Schlüsselkonzepte**
+
+| **Thema**                 | **Inhalt**                                                                                   |
+|---------------------------|---------------------------------------------------------------------------------------------|
+| **Transitionssysteme**    | Zustände (\( \Sigma \)), Initialzustand (\( \sigma_I \)), Transitionen (\( \to \)).          |
+| **Sicherheit**            | \( \Box P \): \( P \) gilt immer, auf endlichen Spuren widerlegbar.                         |
+| **Lebendigkeit**          | \( \Diamond P \): \( P \) tritt irgendwann ein, nur auf unendlichen Spuren widerlegbar.     |
+| **LTL-Spezifikationen**   | Temporale Logik zur Beschreibung von Sicherheit und Lebendigkeit mit Operatoren (\( \Box, \Diamond, U \)). |
+| **Ausblick**              | Formale Semantik, Automatenmodellierung, Verifikation durch Model Checking.                 | 
+
+Lass mich wissen, wenn du weitere Beispiele oder Details benötigst!

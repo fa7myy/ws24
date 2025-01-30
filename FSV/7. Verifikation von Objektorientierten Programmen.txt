@@ -1,0 +1,97 @@
+7. Verifikation von Objektorientierten Programmen
+
+Spezifikation von Interfaces und Klassen
+
+Zentrale Idee: definiere abstraktes Modell des Verhaltens
+▶ Logische Sicht auf internen Zustand (Mengen, Sequenzen, . . . )
+▶ Spezifiziere Außensicht aller Methoden im Hinblick auf dieses Modell
+→ Eingabe/Ausgabe Relationen über alten und neuen Zustand
+
+Beispiel: List<E>
+▶ logische Zustandrepräsentation: Sequenz xs
+▶ Konstruktor: Ergebniszustand xs = ⟨ ⟩ ist die leere Sequenz
+▶ add(e): xs = old(xs) ◦ ⟨e⟩
+▶ remove(e): ∃0 ≤ i ≤ |xs|. old(xs) = xs[..i] ◦ ⟨e⟩ ◦ xs[i..]
+(nur sinnvoll falls e überhaupt vorhanden)
+
+Notwendig: mathematische Operationen auf Sequenzen
+▶ Länge |xs|, Konkatenation ◦, Subsequenz bis/von Index xs[..i] und xs[i..]
+▶ Axiome/Theoreme, z.B. |xs ◦ ys| = |xs| + |ys|
+i ≤ |xs| ⇒ xs[..i] ◦ xs[i..] = xs
+
+Die Spezifikation ist unabhängig von der konkreten Implementierung
+✓ bezüglich der Algorithmen: analog zu Prozeduren
+✓ Abstraktion von den intern verwendeten Datenstrukturen
+(z.B. Array, verkettete Liste)
+✓ Wiederverwendung von Spezifikationen durch Vererbung:
+public class HashSet<E> implements Set<E>
+
+Verifikation: Klasseninvarianten, Vererbung
+
+Überlegungen
+▶ Wie genau repräsentiert das externe Modell xs den internen Zustand data, size der Klasse?
+▶ Wann ist eine Methode korrekt implementiert? (≈ Regel zur Verifikation von Prozeduren)
+→ Klasseninvarianten
+
+Klasseninvarianten
+Gegeben:
+    ▶ Modellvariable(n) ⃗m = m1, . . . ,mn
+    ▶ Klassenattribute ⃗a = a1, . . . , an
+
+Eine Klasseninvariante R(⃗m,⃗a) ist eine Relation die
+▶ den Zusammenhang zwischen der externen und internen Sicht beschreibt
+    Beispiel: xs = ⟨data[0], . . . , data[size − 1]⟩
+▶ zusätzliche Konsistenzbedingungen über den internen Zustand ⃗a aufstellt
+    Beispiel: size ≤ data.length
+    Beispiel: verkettete Liste hat keine Zyklen, internes Array ist sortiert
+
+Definition: Relation R(⃗m,⃗a) ist eine (korrekte) Klasseninvariante wenn
+∃⃗m. R(⃗m,⃗a) in allen Zuständen möglicher Ausführungen gilt für alle Instanzen
+(Objekte) der Klasse, für die nicht gerade eine Methode ausgeführt wird.
+
+▶ Zusammenhang zwischen Objektzustand ⃗a und logischem Modell ⃗m werden
+vom Aufrufer von einem Aufruf zum nächsten erhalten
+▶ Voraussetzung: kein direkter Zugriff auf ⃗a von Außen (private Attribute)
+▶ Zwischendurch darf die Verifikation des Aufrufers die Veränderung von ⃗m
+gemäß den Nachbedingungen “beobachten”
+
+Theorem: R(⃗m,⃗a) Klasseninvariante falls
+▶ ∃⃗m. R(⃗m,⃗a) gilt nach Ausführen des Konstruktors
+▶ ∃⃗m. R(⃗m,⃗a) zusätzliche (implizite) Vor- und Nachbedingung für Methoden
+
+Invariante sind property checks, die zur validation von Eingabeparameter dienen.
+
+m => logical model
+a => internal private state e.g. fields
+
+Konkret: für Methode mit Parametern ⃗x Vorbedingung P, Nachbedingung Q,
+Implementierung code müssen wir das Hoare Tripel beweisen:
+
+{P ∧ ⃗xpre = ⃗x ∧ R(⃗mpre,⃗a)}
+    ...
+    code 
+    ...
+{∃⃗m. Q[⃗x → ⃗xpre, old(⃗m) → ⃗mpre] ∧ R(⃗m,⃗a)}
+
+▶ Logische Variablen ⃗xpre, ⃗mpre verweisen auf Startwerte
+▶ Wir müssen angeben, was der neue Wert von ⃗m sein soll
+(durch Instanziierung des ∃-Quantors in der Nachbedingung)
+
+Vererbung
+
+Möglichkeiten für das Erben von Interfaces/Klassen
+▶ Erweiterung des logischen Modells
+▶ Hinzunahme neuer Invarianten
+
+Prinzip für das Implementieren/Überschreiben von Methoden in Subklassen
+▶ Vorbedingungen dürfen abgeschwächt werden
+▶ Nachbedingungen dürfen verstärkt werden
+
+Klasseninvarianten
+▶ beschreiben den Zusammenhang zwischen logischer Außensicht und dem
+internen Zustand
+▶ können zusätzliche Eigenschaften über die internen Datenstrukturen
+ausdrücken, diese werden evtl. zur Verifikation benötigt werden
+▶ müssen vom Konstruktor etabliert werden
+▶ müssen über alle Methoden erhalten bleiben
+

@@ -1,0 +1,37 @@
+6. Hoare-Logik: Prozeduren
+
+Signatur von Process
+▶ Parameter x1, . . . , xn
+▶ Rückgabe-Variable y wird in code zugewiesen (statt return)
+
+Wir spezifizieren einen Kontrakt für Process
+▶ Vorbedinung P: Formel über x1, . . . , xn
+▶ Nachbedinung Q: Formel über Rückgabe y und x1, . . . , xn (Startwerte)
+
+=> {P} code {Q} 
+
+Beispiel:
+
+procedure Max(s)
+    returns m
+    requires s set with s ̸= ∅
+    ensures m ∈ s ∧ ∀ x ∈ s. m ≥ x
+begin
+    code
+end
+
+Zu zeigen ist die Nachbedingung für
+▶ finalen Wert y der Rückgabevariable
+▶ initiale Werte xi(pre) der Parameter
+
+Kontrakt = Vereinbarung zwischen Aufrufer und Implementierung
+▶ Aufrufer muss Vorbedingung etablieren, darf Nachbedingung annehmen
+▶ Prozedur darf Vorbedingung annehmen, muss Nachbedingung etablieren
+
+Was Sie wissen und können sollten
+▶ Über welche Variablen sind die Vor-/Nachbedingung einer Prozedur definiert
+und auf welche "Zeitpunkte" der Ausführung verweisen diese?
+▶ Wie sieht die Regel zum Prozeduraufruf aus?
+▶ Wie ersetzt man Prozedurparameter durch die Argumente an der Aufrufstelle?
+▶ Wie wird die Implementierung einer Prozedur verifiziert?
+▶ In wie fern ist der heute gezeigte Ansatz “modular”?

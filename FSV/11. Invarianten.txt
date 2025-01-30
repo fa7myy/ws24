@@ -1,0 +1,65 @@
+11. Invarianten
+
+Was sind Invarianten?
+Eine Invariante ist eine Eigenschaft (Prädikat), die in einem System immer wahr bleibt, unabhängig vom aktuellen Zustand oder der Ausführungsschritt.
+Beispiel: In einem Bankkonto-System könnte die Invariante sein, dass der Kontostand niemals negativ wird.
+
+I ist eine Prädikatvariable, die verwendet wird, um Invarianten oder andere Eigenschaften eines Systems auszudrücken.
+
+1. **Repräsentation von Verifikationsproblemen als Systeme von Horn-Klauseln**
+
+   - **Horn-Klauseln:** Logische Implikationen, die zur Modellierung von Programmverifikationsproblemen verwendet werden. Sie bestehen aus Annahmen (z. B. Programmsemantik) und einer Konklusion, die Eigenschaften wie Invarianten, Vor- und Nachbedingungen beschreibt.
+   - **Konstruktion:**
+     - **Prädikat pro Programmstelle:** Jede relevante Stelle im Programm (z. B. vor/nach Anweisungen) wird durch ein Prädikat repräsentiert.
+     - **Klausel pro Transition:** Jede Anweisung oder Bedingung wird in eine logische Klausel umgewandelt, die die Änderung des Programms beschreibt.
+   - **Zielklauseln:** Definieren, welche Eigenschaften erfüllt sein müssen, z. B. eine Nachbedingung \( \phi \): \( \phi_1 \land \dots \land \phi_m \implies \phi \).
+   - **Initiale Klauseln:** Erzwingen sinnvolle Startbedingungen und stellen sicher, dass gültige Modelle existieren.
+
+2. **Beispiele:**
+   - **Funktion `max(x, y)`:**
+     - Modellierung der Funktionalität mit Horn-Klauseln: \( x > y \implies \text{max}(x, y) = x \) und \( x \leq y \implies \text{max}(x, y) = y \).
+     - Verifikation einer Eigenschaft wie \( \text{max}(x, y) \geq x \) durch Zielklauseln.
+   - **Schleifenanalyse:**
+     - Programm: \( i = 0; \text{while } (i \leq n) \{ i++; \} \).
+     - Horn-Klauseln modellieren Schleifeninvarianten wie \( i \leq n \) und prüfen deren Gültigkeit.
+
+---
+
+2. **Kenntnis über Tools und Formate (z. B. SMT-LIB)**
+
+   - **SMT-LIB:** Ein standardisiertes Format zur Beschreibung von Verifikationsproblemen für SMT-Solver.
+   - **Beispiel für SMT-LIB-Syntax:**
+     ```smt
+     (set-logic HORN)
+     (declare-fun max (Int Int) Int)
+     (assert (forall ((x Int) (y Int)) (=> (> x y) (= (max x y) x))))
+     (assert (forall ((x Int) (y Int)) (=> (<= x y) (= (max x y) y))))
+     (assert (forall ((x Int) (y Int)) (>= (max x y) x)))
+     (check-sat)
+     ```
+   - **Tools:**
+     - **Z3:** Ein leistungsfähiger SMT-Solver, der Systeme von Horn-Klauseln lösen kann.
+     - **Eldarica:** Speziell für Constrained Horn Clauses (CHC) ausgelegt.
+
+---
+
+3. **Überblick über Lösungsansätze**
+
+   - **Systeme von Horn-Klauseln:**
+     - Reduktion des Verifikationsproblems auf ein System von logischen Klauseln.
+     - Automatisierte Analyse durch SMT-Solver.
+
+   - **Abstrakte Domänen:**
+     - Abstraktion konkreter Werte (z. B. \(\mathbb{Z}\)) auf endliche Mengen abstrakter Werte.
+     - **Beispiel:** \( \{+, 0, -\} \) repräsentiert positive, negative und Null-Werte.
+     - Verwendet zur Analyse von Invarianten, mit Techniken wie Widening zur Sicherstellung der Konvergenz.
+
+   - **Schablonenbasierte Invarianten:**
+     - Definieren generische Muster (z. B. \( \_ \leq \_ \), \( \_ = \_ \)).
+     - Instanziierung mit Programmvariablen, um Invarianten wie \( i \leq n \) zu erzeugen.
+     - Vorteile: Dynamisch anpassbar.
+     - Nachteile: Exponentiell viele Kombinationen und Schwierigkeiten mit disjunkten/quantifizierten Formeln.
+
+   - **CHC-Solver:** 
+     - Kombinieren Horn-Klauseln, abstrakte Domänen und SMT-Techniken, um Programme effizient zu analysieren.
+     - Lösen Probleme unabhängig von der konkreten Programmiersprache.
