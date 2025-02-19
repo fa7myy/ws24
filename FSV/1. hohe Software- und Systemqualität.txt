@@ -18,7 +18,7 @@ Bsp.:
 Was bedeutet Verifikation?
 Verfikation ist die art und weise das produkt so zu testen um sicher zu stellen, dass es sich an den spezifizierten anforderungen einhaelt.
 Bsp.:
-1. automatisierte Überprüfung
+Automatisierte Überprüfung
 2. des Quellcodes
 3. eines abstrakten Modells
 
