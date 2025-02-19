@@ -170,7 +170,7 @@ Hier sind **mögliche Prüfungsfragen und Antworten** zu **Kapitel 2: Vorgehensm
 ### **Fragen zum V-Modell XT**  
 7. **Was ist das V-Modell XT und welche Ziele verfolgt es?**  
    - Ein **prozessbasiertes Vorgehensmodell für IT-Projekte**, das klare **Prozesse, Verantwortlichkeiten und Qualitätsanforderungen** definiert.  
-
+27
 8. **Welche wesentlichen Merkmale hat das V-Modell XT?**  
    - **Zentrale Bedeutung der Projektergebnisse**  
    - **Verantwortlichkeiten sind klar festgelegt**  
@@ -567,3 +567,102 @@ Hier sind **mögliche Prüfungsfragen und Antworten** zu **Kapitel 2: Vorgehensm
 
 ---
 
+Here is a list of all **BGB (Bürgerliches Gesetzbuch) sections** mentioned in the provided text:
+
+1. **§ 631 BGB** – Werkvertrag: Der Auftragnehmer schuldet ein fertiges Produkt.
+2. **§ 611 BGB** – Dienstvertrag: Der Auftragnehmer erbringt eine Leistung, schuldet aber keinen konkreten Erfolg.
+3. **§ 433 BGB** – Kaufvertrag: Gilt für die Lieferung von Standardsoftware oder Hardware.
+4. **§ 535 BGB** – Mietvertrag: Relevanz für SaaS und Cloud-Dienste.
+5. **§ 640 BGB** – Abnahme: Der Auftraggeber muss die Abnahme erklären, wenn das Werk mangelfrei ist.
+6. **§ 642 BGB** – Annahmeverzug: Entschädigungsanspruch des Auftragnehmers bei unterlassener Mitwirkung durch den Auftraggeber.
+7. **§ 643 BGB** – Kündigung: Der Auftragnehmer kann den Vertrag kündigen, wenn der Auftraggeber seiner Mitwirkungspflicht nicht nachkommt.
+
+
+## **Additional notes to be revised**
+
+BGH = Bundesgerichtshof
+
+**Welche vier zentralen Werte enthält das Agile Manifest?**  
+   1. **Individuen und Interaktionen** vor Prozessen und Werkzeugen  
+   2. **Funktionierende Software** vor umfassender Dokumentation  
+   3. **Zusammenarbeit mit dem Kunden** vor Vertragsverhandlungen  
+   4. **Anpassung an Veränderungen** vor der strikten Befolgung eines Plans  
+
+**Welche agilen Entwicklungspraktiken verbessern die Softwarequalität?**  
+   - **Pair-Programming** (zwei Entwickler arbeiten gemeinsam an Code)  
+   - **Automatisierte Tests vor der Entwicklung**  
+   - **Collective Code Ownership** (alle Entwickler sind für den Code verantwortlich)
+
+**Welche Rollen gibt es in Scrum?**  
+   - **Product Owner** (verantwortlich für Anforderungen)  
+   - **Scrum Master** (stellt sicher, dass Scrum richtig angewendet wird)  
+   - **Entwicklungsteam** (verantwortlich für die Umsetzung der Anforderungen)  
+
+**Wie ist ein Scrum-Sprint aufgebaut?**  
+   - **Sprint Planning** → Definition der Sprint-Ziele  
+   - **Daily Stand-up** → Tägliches Kurzmeeting  
+   - **Sprint Review** → Vorstellung der Ergebnisse  
+   - **Sprint Retrospective** → Analyse und Verbesserung des Prozesses
+
+**Welche Hauptaufgaben hat ein Projektleiter in einem IT-Projekt?**  
+   - **Planung und Steuerung** des Projekts  
+   - **Überwachung des Fortschritts und Kontrolle der Ressourcen**  
+   - **Rekrutierung und Führung des Teams**  
+   - **Kommunikation mit Stakeholdern**  
+   - **Erstellung und Pflege der Projektdokumentation**  
+
+**Welche Dokumente verwaltet der Projektleiter?**  
+   - **Projekthandbuch** (Leitlinien und Vorgaben)  
+   - **Projektplan** (Meilensteine und Zeitpläne)  
+   - **Projektstatusberichte** (Updates für Stakeholder)  
+   - **Risikoliste** (Identifikation und Management potenzieller Risiken)  
+   - **Projektabschlussbericht** (Lessons Learned und Bewertung)
+
+**Welche Gremien gibt es in IT-Projekten?**  
+   - **Lenkungsausschuss**: Gesamtprojektleiter, Stellvertreter und Geschäftsleitung  
+   - **Projektleitungsgremium**: Unterstützt Entscheidungen und Kontrolle  
+   - **Change Control Board**: Verwaltung von Änderungen am Projektumfang
+
+**Welche Schritte gehören zur Projektplanung?**  
+   - **Projektstrukturierung** (Aufgabenpakete definieren)  
+   - **Meilensteinplanung** (Zwischenziele festlegen)  
+   - **Ressourcenplanung** (Personal und Materialien zuweisen)  
+   - **Risikomanagement** (Risiken erkennen und minimieren)  
+   - **Qualitätssicherung** (Prüfstandards definieren)  
+   - **Kostenmanagement** (Budgetplanung und Kontrolle)
+
+**Welche Dokumente sind essenziell für die Spezifikation eines IT-Projekts?**  
+   - **Anforderungskatalog** (Übersicht der Projektanforderungen)  
+   - **Leistungsbeschreibung** (Grobe Spezifikation der erwarteten Leistungen)  
+   - **Lastenheft (DIN 69901-5)** (Forderungen des Auftraggebers)  
+   - **Pflichtenheft** (Technische Umsetzung durch den Auftragnehmer)
+
+**Was umfasst das Fachfeinkonzept nach dem V-Modell XT?**  
+   - **Funktionale und nicht-funktionale Anforderungen**  
+   - **Logisches Datenmodell und Schnittstellen**  
+   - **Benutzerschnittstellen und Abnahmekriterien**
+
+**Vergessenes Pflichtenheft** → Wird durch Auftragsdurchführung ersetzt.  
+   - **Widersprüchliches Pflichtenheft** → Führt zu Klärungsbedarf zwischen den Parteien.
+
+**Welche vier Kategorien von Mitwirkungsleistungen gibt es?**  
+   - **Mitwirkungsleistungen**: Aktive Unterstützung des Auftraggebers (z. B. Bereitstellung von Testdaten)  
+   - **Beistellungsleistungen**: Lieferung von Material oder Informationen (z. B. Zugänge zu Systemen)  
+   - **Mitwirkungspflichten**: Vertraglich geregelte und einklagbare Leistungen  
+   - **Mitwirkungsobliegenheiten**: Nicht einklagbar, aber projektentscheidend (z. B. aktive Kommunikation)  
+
+**Welche typischen Mitwirkungsleistungen sind in IT-Projekten erforderlich?**  
+   - **Benennung eines Ansprechpartners**  
+   - **Bereitstellung von Daten und Spezifikationen**  
+   - **Priorisierung und Klassifizierung von Anforderungen**  
+   - **Sicherstellung aktueller Spezifikationen**
+
+**Welche Modelle können Verzögerungen durch mangelnde Mitwirkung vermeiden?**  
+   - **Bonus-/Malus-Regelungen** für fristgerechte oder verspätete Mitwirkung  
+   - **Vergütung für Mehraufwand bei wiederholter Prüfung mangelhafter Leistungen**  
+
+**Welche Punkte sollte ein Vertrag zur Mitwirkung des Auftraggebers enthalten?**  
+   - **Definition von Art und Umfang der Mitwirkung**  
+   - **Regelung zu Fristen und Qualität der Mitwirkung**  
+   - **Vergütung oder Sanktionen bei Verzögerungen**  
+   - **Kündigungs- und Schadensersatzregelungen**  
